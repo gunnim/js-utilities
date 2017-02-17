@@ -1,12 +1,32 @@
-﻿var React = require('react');
+﻿import * as React from 'react';
 
-exports.component = React.createClass({
+interface Props {
+    ok?     : string
+    cancel? : string;
 
-  noClick: function(e) {
+    // Handle OK is mandatory
+    handleOK(e? : React.FormEvent)      : void;
+    handleCancel?(e? : React.FormEvent) : void;
+
+    divisor? : string;
+}
+
+class State {
+
+}
+
+export function cancel() {
+
+    this.setState({ modal: false });
+}
+
+class ModalWindow extends React.Component<Props, State> {
+
+  noClick(e) {
     e.preventDefault();
-  },
+  }
 
-  render: function () {
+  render() {
 
     for (var x = 1; x <= 3; ++x) {
         if (this.props['h' + x]) {
@@ -43,9 +63,6 @@ exports.component = React.createClass({
         </article>
       </div>);
   }
-});
+}
 
-exports.cancel = function () {
-
-    this.setState({ modal: false });
-};
+export default ModalWindow;

@@ -1,4 +1,4 @@
-module.exports = function(obj) {
+export default function urlEncodeObject(obj) {
 
   var str = [];
 
