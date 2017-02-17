@@ -109,7 +109,7 @@ export default function constructXhr(p1 : P1 | string,
     /*
         var formData = 'param1=' + encodeURIComponent(paramStr1) + '&param2=' + encodeURIComponent(paramStr2);
 
-        var constructXhr = require('utilities/xhr.ts');
+        var constructXhr = require('gUtilities/xhr.ts');
         var xhr = constructXhr('/umbraco/surface/test/action', myCallback);
 
         xhr.send(formData);
@@ -119,7 +119,7 @@ export default function constructXhr(p1 : P1 | string,
     /*
         var myObj = { prop1: 'a', prop2: 1 };
 
-        var constructXhr = require('utilities/xhr.ts');
+        var constructXhr = require('gUtilities/xhr.ts');
         var xhr = constructXhr({
             type: 'POST',
             url: '/umbraco/surface/test/action',
