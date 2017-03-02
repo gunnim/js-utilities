@@ -29,8 +29,9 @@ export default function constructXhr(p1 : P1 | string,
 
         var xhr = e.target as XMLHttpRequest;
         
-                                            // Arrays typeof == object also 
-        if (!xhr.responseType.length || typeof xhr.response != 'object') {
+
+            // Determine if browser supports responseType param
+        if ((xhr.responseType !== (p1 as P1).responseType && xhr.responseType !== 'json')) {
 
             var newXhr : XhrLike = {
                 response: JSON.parse(xhr.response),
