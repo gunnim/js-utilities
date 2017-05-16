@@ -152,5 +152,5 @@ formToObject.prototype.setFormObj = function(){
 	return this.formObj;
 
 }
-
-export default formToObject;
+							// wtf..
+export default formToObject as any as {new(formref)};
