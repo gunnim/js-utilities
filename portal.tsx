@@ -33,7 +33,7 @@ class Portal extends React.Component<Props, void> {
   }
 
   componentDidUpdate() {
-    ReactDOM.render(<div {...this.props}>{this.props.children}</div>, this._portalElement);
+    ReactDOM.render(<div>{this.props.children}</div>, this._portalElement);
   }
 
   render() { return null; }
