@@ -3,7 +3,13 @@ import * as ReactDOM from 'react-dom';
 
 interface Props {
 	portalId?: string;
+  portalClass?: string;
 	elementType?: string;
+
+  /**
+   * Create a react root container under the target id or class
+   */
+  createContainerInTarget?: boolean;
 }
 
 /**
@@ -14,14 +20,32 @@ class Portal extends React.Component<Props, void> {
   _portalElement = null;
 
   componentDidMount() {
-    var portal = this.props.portalId && 
-						document.getElementById(this.props.portalId);
+
+    var {
+      portalId,
+      portalClass,
+      elementType,
+      createContainerInTarget,
+    } = this.props;
+    
+    var portal = portalId 
+            && document.getElementById(portalId) 
+            || portalClass 
+            && document.getElementsByClassName(portalClass)[0];
 
 		// Create and append to body
     if (!portal) {
-      var portal = document.createElement(this.props.elementType || 'div');
-      portal.id = this.props.portalId;
+      portal = document.createElement(elementType || 'div');
+      portal.id = portalId;
       document.body.appendChild(portal);
+    }
+    else if (createContainerInTarget) {
+      var target = portal;
+      portal = document.createElement(elementType || 'div');
+
+      if (portalId)
+        portal.id = portalId;
+      target.appendChild(portal);
     }
 
     this._portalElement = portal;
@@ -29,7 +53,11 @@ class Portal extends React.Component<Props, void> {
   }
 
   componentWillUnmount() {
-    document.body.removeChild(this._portalElement);
+
+    try {
+      document.body.removeChild(this._portalElement);
+    }
+    catch(ex) {}
   }
 
   componentDidUpdate() {
@@ -39,4 +67,4 @@ class Portal extends React.Component<Props, void> {
   render() { return null; }
 }
 
-export default Portal
+export default Portal;
