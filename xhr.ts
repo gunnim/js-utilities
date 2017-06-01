@@ -7,7 +7,7 @@ export interface P1 {
     type?: string;
     method?: string;
     url: string;
-    responseType?: string;
+    responseType?: XMLHttpRequestResponseType;
     callback?(xhrObj : XMLHttpRequest | XhrLike): () => void;
     contentType?: string;
     defaultContentType?: boolean;
