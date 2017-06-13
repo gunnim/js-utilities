@@ -13,11 +13,11 @@ interface Props {
 }
 
 /**
- * Simple portal as demonstrated by Dan Abromovo
+ * Simple portal as demonstrated by Dan Abromov
  * http://stackoverflow.com/a/28823590/5663961
  */
 class Portal extends React.Component<Props, void> {
-  _portalElement = null;
+  _portalElement: Element = null;
 
   componentDidMount() {
 
@@ -57,10 +57,13 @@ class Portal extends React.Component<Props, void> {
     try {
       document.body.removeChild(this._portalElement);
     }
-    catch(ex) {}
+    catch(ex) {
+      // console.log('Unable to remove child from document: \n' + ex);
+    }
   }
 
   componentDidUpdate() {
+
     ReactDOM.render(<div>{this.props.children}</div>, this._portalElement);
   }
 
