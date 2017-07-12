@@ -5,8 +5,8 @@ interface Props {
     cancel? : string;
 
     // Handle OK is mandatory
-    handleOK(e? : React.FormEvent)      : void;
-    handleCancel?(e? : React.FormEvent) : void;
+    handleOK(e? : React.FormEvent<HTMLAnchorElement>)      : void;
+    handleCancel?(e? : React.FormEvent<HTMLAnchorElement>) : void;
 
     h1?: string;
     h2?: string;
@@ -18,16 +18,12 @@ interface Props {
     divisor? : string;
 }
 
-class State {
-
-}
-
 export function cancel() {
 
     this.setState({ modal: false });
 }
 
-class ModalWindow extends React.Component<Props, State> {
+class ModalWindow extends React.Component<Props> {
 
   noClick(e) {
     e.preventDefault();

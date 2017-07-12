@@ -16,7 +16,7 @@ interface Props {
  * Simple portal as demonstrated by Dan Abromov
  * http://stackoverflow.com/a/28823590/5663961
  */
-class Portal extends React.Component<Props, void> {
+class Portal extends React.Component<Props> {
   _portalElement: Element = null;
 
   componentDidMount() {
