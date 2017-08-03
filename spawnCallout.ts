@@ -30,7 +30,7 @@ export default function spawnCallout(obj : Settings) {
     calloutContainer.classList.add(obj.error ? 'error' : 'success');
 
     // We stagger the css classes as to retrigger the animation
-    setTimeout(() => calloutContainer.classList.remove('animation'), timeout - 310);
+    setTimeout(() => calloutContainer.classList.remove('animation', (obj.error ? 'error' : 'success')), timeout - 310);
 
     // In the end we remove the callout
     //setTimeout(function() {
