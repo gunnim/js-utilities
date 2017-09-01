@@ -5,6 +5,8 @@
  * @param num 
  * @param delimiter 
  */
-export default function(num: number, delimiter: string) {
+export default function(num: number, delimiter?: string) {
+  delimiter = delimiter || '.';
+  
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, delimiter);
 };
