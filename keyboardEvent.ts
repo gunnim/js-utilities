@@ -1,9 +1,9 @@
-﻿export default function createKeyboardEvent(callback, 
-                         keycode : string, 
-                         ctrl? : boolean, 
-                         alt? : boolean, 
-                         root?) 
-                         : (e) => void {
+﻿export default function createKeyboardEvent(
+  callback, 
+  keycode : string, 
+  ctrl? : boolean, 
+  alt? : boolean, 
+  root?) : (e) => void {
 
     var keyup = function (e) {
 
