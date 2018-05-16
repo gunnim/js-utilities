@@ -7,4 +7,4 @@ export default function urlEncodeObject(obj) {
       str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
 
   return str.join("&");
-};
+}
