@@ -6,4 +6,4 @@
     }
 
     return str.toUpperCase();
-};
+}
