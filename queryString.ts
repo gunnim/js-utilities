@@ -1,15 +1,23 @@
-﻿export default function queryString(customQueryString? : string) {
+﻿/**
+ * 
+ * @param customQueryString 
+ */
+export default function queryString(customQueryString?: string): any {
 
-    var urlParams = {};
+  function decode(s: any) {
+    return decodeURIComponent(s.replace(additionLiteral, " "));
+  }
 
-    var match,
-        pl = /\+/g,  // Regex for replacing addition symbol with a space
-        search = /([^&=]+)=?([^&]*)/g,
-        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-        query = customQueryString || location.search.substring(1);
+  const urlParams: any = {};
 
-    while (match = search.exec(query))
-        urlParams[decode(match[1])] = decode(match[2]);
+  let match;
+  const additionLiteral = /\+/g;  // Regex for replacing addition symbol with a space
+  const search = /([^&=]+)=?([^&]*)/g;
+  // eslint-disable-next-line no-restricted-globals
+  const query = customQueryString || location.search.substring(1);
 
-    return urlParams;
+  while (match = search.exec(query))
+    urlParams[decode(match[1])] = decode(match[2]);
+
+  return urlParams;
 }
