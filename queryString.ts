@@ -16,6 +16,7 @@ export default function queryString(customQueryString?: string): any {
   // eslint-disable-next-line no-restricted-globals
   const query = customQueryString || location.search.substring(1);
 
+  // eslint-disable-next-line no-cond-assign
   while (match = search.exec(query))
     urlParams[decode(match[1])] = decode(match[2]);
 
