@@ -8,7 +8,11 @@ const hour =  minute * 60;
  * Takes a duration in milliseconds and returns formatted
  * @param timeInMs Duration in milliseconds
  */
-export default function formatDuration(timeInMs: number) {
+export default function formatDuration(
+  timeInMs: number, 
+  alwaysShowMinutes?: boolean,
+  alwaysShowHours?: boolean,
+) {
   const hours = Math.floor(timeInMs / hour);
   timeInMs %= hour;
 
@@ -19,9 +23,9 @@ export default function formatDuration(timeInMs: number) {
   // timeInMs %= second;
 
           // Display hours unpadded if non-zero
-  return `${hours ? `${hours}:` : ''}`
+  return `${hours || alwaysShowHours ? `${hours}:` : ''}`
     // display minutes padded if hours or minutes are non-zero
-    + `${hours || minutes ? `${padNum(minutes, 2)}:` : ''}`
+    + `${hours || minutes || alwaysShowMinutes ? `${padNum(minutes, 2)}:` : ''}`
     // display seconds padded
     + `${padNum(seconds, 2)}`;
 }
