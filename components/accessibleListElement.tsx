@@ -10,16 +10,16 @@ interface Props {
 }
 
 export default React.forwardRef(
-  function AccessibleTableRow({
+  function AccessibleListElement({
     children,
     onActivate,
     ...rest
   }: Props,
-  ref: React.Ref<HTMLTableRowElement>,
-) {
+    ref: React.Ref<HTMLLIElement>,
+  ) {
 
     return (
-      <tr
+      <li
         ref={ref}
         tabIndex={0}
         onClick={() => onActivate()}
@@ -27,6 +27,6 @@ export default React.forwardRef(
         {...rest}
       >
         {children}
-      </tr>
+      </li>
     );
   });
