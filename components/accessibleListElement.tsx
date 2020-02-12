@@ -2,11 +2,9 @@ import React from 'react';
 
 const enterKeyCode = 13;
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLLIElement> {
   children: React.ReactNode;
   onActivate: Function;
-
-  [index: string]: any;
 }
 
 export default React.forwardRef(
